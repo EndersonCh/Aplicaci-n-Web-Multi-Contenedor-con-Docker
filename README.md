@@ -28,16 +28,17 @@ Para poder ejecutar este proyecto en tu máquina local, necesitas tener instalad
 
 **1. Clonar el repositorio:**
 Abre tu terminal y ejecuta el siguiente comando para descargar el código a tu máquina local:
-\\\bash
-git clone https://github.com/EndersonCh/Aplicaci-n-Web-Multi-Contenedor-con-Docker.git
-cd Aplicaci-n-Web-Multi-Contenedor-con-Docker
-\\\
+
+### git clone https://github.com/EndersonCh/Aplicaci-n-Web-Multi-Contenedor-con-Docker.git
+
+### cd Aplicaci-n-Web-Multi-Contenedor-con-Docker
+
 
 **2. Construir y levantar la aplicación:**
 Una vez dentro de la carpeta raíz del proyecto, ejecuta el siguiente comando para que Docker descargue las imágenes, construya los contenedores y levante toda la arquitectura en segundo plano:
-\\\bash
-docker compose up -d --build
-\\\
+
+### docker compose up -d --build
+
 
 ---
 
