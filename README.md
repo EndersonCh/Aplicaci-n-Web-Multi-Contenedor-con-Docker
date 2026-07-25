@@ -63,7 +63,7 @@ Las variables inyectadas para la conexión a la base de datos son:
 
 ---
 
-## 🛑 Detener la aplicación
+##Detener la aplicación
 
 Para detener y eliminar los contenedores, redes creadas por el proyecto (sin perder los datos de la base de datos que están en el volumen), ejecuta:
 \`\`\`bash
