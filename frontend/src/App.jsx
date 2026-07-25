@@ -74,6 +74,15 @@ function App() {
           <br />
           <strong>Semestre 2026-1</strong>
         </p>
+        <p
+          style={{
+            color: "#080f16",
+            padding: "0.2rem 0.2rem",
+            fontSize: "0.8rem",
+          }}
+        >
+          <strong>Estado del servidor:</strong> {status}
+        </p>
       </div>
 
       {/* 2. Formulario de Entrada (Con más espacio y sombras) */}
