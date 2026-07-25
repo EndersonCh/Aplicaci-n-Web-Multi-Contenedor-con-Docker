@@ -2,7 +2,7 @@
 
 **Integrantes:** Jessica Ramirez y Enderson Chavez
 
-## 📝 Descripción del Proyecto
+##Descripción del Proyecto
 
 Este proyecto consiste en el despliegue de una aplicación web similar a un blog utilizando una arquitectura multicontenedor orquestada con Docker Compose.
 
@@ -14,7 +14,7 @@ La arquitectura se divide en tres servicios principales:
 
 ---
 
-## ⚙️ Requisitos Previos
+##Requisitos Previos
 
 Para poder ejecutar este proyecto en tu máquina local, necesitas tener instaladas las siguientes herramientas:
 
@@ -24,7 +24,7 @@ Para poder ejecutar este proyecto en tu máquina local, necesitas tener instalad
 
 ---
 
-## 🚀 Instrucciones de Clonación y Ejecución
+##Instrucciones de Clonación y Ejecución
 
 **1. Clonar el repositorio:**
 Abre tu terminal y ejecuta el siguiente comando para descargar el código a tu máquina local:
@@ -41,7 +41,7 @@ docker compose up -d --build
 
 ---
 
-## 🌐 URLs de Acceso
+##URLs de Acceso
 
 Cuando todos los contenedores estén en estado "Up", podrás acceder a la aplicación a través de tu navegador web en las siguientes direcciones:
 
@@ -50,7 +50,7 @@ Cuando todos los contenedores estén en estado "Up", podrás acceder a la aplica
 
 ---
 
-## 🔐 Variables de Entorno y Configuración
+##Variables de Entorno y Configuración
 
 Las credenciales de acceso y configuraciones de red están gestionadas directamente a través del archivo `docker-compose.yml`. Los contenedores se comunican internamente mediante una red Docker personalizada (`parcial_network`).
 
