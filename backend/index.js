@@ -60,6 +60,35 @@ app.post("/api/posts", async (req, res) => {
   }
 });
 
+// 5. Ruta para ELIMINAR un post (DELETE)
+app.delete("/api/posts/:id", async (req, res) => {
+  // Extraemos el "id" dinámico de los parámetros de la URL
+  const { id } = req.params;
+
+  try {
+    // Ejecutamos la consulta SQL para borrar donde el id coincida.
+    // RETURNING * nos devuelve el post que acaba de ser borrado por si queremos confirmar qué se borró.
+    const result = await pool.query(
+      "DELETE FROM posts WHERE id = $1 RETURNING *",
+      [id],
+    );
+
+    // Si rowCount es 0, significa que la base de datos no encontró ningún post con ese ID
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: "Post no encontrado" });
+    }
+
+    // Respondemos con éxito
+    res.json({
+      message: "Post eliminado correctamente",
+      deletedPost: result.rows[0],
+    });
+  } catch (err) {
+    console.error("Error al eliminar:", err);
+    res.status(500).json({ error: "Error interno al eliminar la entrada" });
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor API corriendo en el puerto ${PORT}`);

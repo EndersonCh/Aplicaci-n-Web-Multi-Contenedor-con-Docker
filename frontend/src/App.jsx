@@ -44,6 +44,23 @@ function App() {
       .catch((err) => console.error("Error al guardar:", err));
   };
 
+  // NUEVO: Función para eliminar un post
+  const handleDelete = (id) => {
+    // Confirmación de seguridad
+    if (!window.confirm("¿Estás seguro de que deseas eliminar esta entrada?"))
+      return;
+
+    fetch(`http://localhost:3000/api/posts/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => {
+        // Actualizamos la lista de posts en pantalla filtrando el que acabamos de borrar
+        setPosts(posts.filter((post) => post.id !== id));
+      })
+      .catch((err) => console.error("Error al eliminar:", err));
+  };
+
   return (
     <div
       style={{
@@ -65,7 +82,7 @@ function App() {
             color: "#0d1216",
             padding: "0.8rem 1.5rem",
             borderTop: "1px solid #cce",
-            borderbottom: "1px solid #cce",
+            borderBottom: "1px solid #cce", // Corregí un pequeño typo de 'borderbottom' aquí
           }}
         >
           <strong>Realizado por:</strong> Jessica Ramires y Enderson Chavez
@@ -85,7 +102,7 @@ function App() {
         </p>
       </div>
 
-      {/* 2. Formulario de Entrada (Con más espacio y sombras) */}
+      {/* 2. Formulario de Entrada */}
       <div
         style={{
           padding: "2.5rem",
@@ -106,7 +123,6 @@ function App() {
           Crear Nueva Entrada
         </h2>
 
-        {/* Aumentamos el 'gap' para separar los inputs */}
         <form
           onSubmit={handleSubmit}
           style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
@@ -181,7 +197,6 @@ function App() {
           </p>
         ) : (
           posts.map((post) => (
-            /* Tarjeta individual para cada post con separación amplia */
             <div
               key={post.id}
               style={{
@@ -213,16 +228,35 @@ function App() {
                 {post.content}
               </p>
 
+              {/* NUEVO: Flexbox para alinear la fecha a la izquierda y el botón a la derecha */}
               <div
                 style={{
                   borderTop: "1px solid #eee",
                   paddingTop: "1rem",
-                  textAlign: "right",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                 }}
               >
                 <small style={{ color: "#888", fontWeight: "500" }}>
                   Publicado el: {new Date(post.created_at).toLocaleString()}
                 </small>
+
+                <button
+                  onClick={() => handleDelete(post.id)}
+                  style={{
+                    padding: "0.5rem 1rem",
+                    backgroundColor: "#dc3545",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    fontSize: "0.9rem",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Eliminar
+                </button>
               </div>
             </div>
           ))
